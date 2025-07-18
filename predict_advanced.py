@@ -160,6 +160,7 @@ class Predictor(BasePredictor):
             default=0.00,
             description="The weight decay for the TI.",
         ),
+        caption_extension: str = Input(description="Extension for caption files", default=".txt"),
     ) -> Path:
         if seed is None:
             seed = random_seed()
@@ -224,6 +225,7 @@ class Predictor(BasePredictor):
             use_template=use_template,
             weight_decay_lora=weight_decay_lora,
             weight_decay_ti=weight_decay_ti,
+            caption_extension=caption_extension,
         )
 
         gc.collect()
