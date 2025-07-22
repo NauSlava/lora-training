@@ -23,8 +23,7 @@ class Predictor(BasePredictor):
         ),
         seed: int = Input(description="A seed for reproducible training", default=1337),
         resolution: int = Input(
-            description="The resolution for input images. All the images in the train/validation dataset will be resized to this"
-            " resolution.",
+            description="The resolution for input images. All the images in the train/validation dataset will be resized to this resolution.",
             default=512,
         ),
         train_text_encoder: bool = Input(
@@ -160,7 +159,10 @@ class Predictor(BasePredictor):
             default=0.00,
             description="The weight decay for the TI.",
         ),
-        caption_extension: str = Input(description="Extension for caption files", default=".txt"),
+        caption_extension: str = Input(
+            description="Extension for caption files (e.g., .txt, .caption). The script will look for a file with the same name as the image but with this extension.",
+            default=".txt"
+        ),
     ) -> Path:
         if seed is None:
             seed = random_seed()
